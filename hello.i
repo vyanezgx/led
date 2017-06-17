@@ -4,10 +4,7 @@
 # 1 "/usr/include/stdc-predef.h" 1 3 4
 # 1 "<command-line>" 2
 # 1 "hello.c"
-
-
-
-
+# 10 "hello.c"
 # 1 "/usr/include/stdio.h" 1 3 4
 # 27 "/usr/include/stdio.h" 3 4
 # 1 "/usr/include/features.h" 1 3 4
@@ -841,7 +838,7 @@ extern int ftrylockfile (FILE *__stream) __attribute__ ((__nothrow__ , __leaf__)
 extern void funlockfile (FILE *__stream) __attribute__ ((__nothrow__ , __leaf__));
 # 943 "/usr/include/stdio.h" 3 4
 
-# 6 "hello.c" 2
+# 11 "hello.c" 2
 # 1 "/usr/local/include/pigpio.h" 1 3
 # 31 "/usr/local/include/pigpio.h" 3
 # 1 "/usr/lib/gcc/arm-linux-gnueabihf/4.9/include/stdint.h" 1 3 4
@@ -2760,32 +2757,43 @@ void time_sleep(double seconds);
 void rawDumpWave(void);
 # 5025 "/usr/local/include/pigpio.h" 3
 void rawDumpScript(unsigned script_id);
-# 7 "hello.c" 2
+# 12 "hello.c" 2
+
+
+
+
+
 
 int main()
 {
-        if(!gpioInitialise()) return -1;
+ if(!gpioInitialise()) return -1;
         gpioSetMode(17, 1);
  gpioSetMode(27, 1);
  gpioSetMode(22, 1);
 
 
         while(1)
-        { sleep(1);
-  gpioWrite(17, 0);
+        { sleep(2);
+
+                gpioWrite(17, 0);
          gpioWrite(27, 1);
          gpioWrite(22, 1);
    sleep(1);
 
-                gpioWrite(17, 1);
-         gpioWrite(27, 0);
-         gpioWrite(22, 1);
-   sleep(1);
+            gpioWrite(17, 1);
+     gpioWrite(27, 0);
+     gpioWrite(22, 1);
+     sleep(1);
 
-                gpioWrite(17, 1);
-         gpioWrite(27, 1);
-         gpioWrite(22, 0);
-                sleep(1);
-        }
+            gpioWrite(17, 1);
+     gpioWrite(27, 1);
+            gpioWrite(22, 0);
+            sleep(1);
+
+            gpioWrite(17,0);
+            gpioWrite(27,0);
+            gpioWrite(22, 0);
+
+}
 return 0;
 }

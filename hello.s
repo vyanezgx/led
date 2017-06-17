@@ -38,7 +38,7 @@ main:
 	mov	r1, #1
 	bl	gpioSetMode
 .L4:
-	mov	r0, #1
+	mov	r0, #2
 	bl	sleep
 	mov	r0, #17
 	mov	r1, #0
@@ -73,6 +73,15 @@ main:
 	bl	gpioWrite
 	mov	r0, #1
 	bl	sleep
+	mov	r0, #17
+	mov	r1, #0
+	bl	gpioWrite
+	mov	r0, #27
+	mov	r1, #0
+	bl	gpioWrite
+	mov	r0, #22
+	mov	r1, #0
+	bl	gpioWrite
 	b	.L4
 .L5:
 	mov	r0, r3
