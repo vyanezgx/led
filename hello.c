@@ -2,13 +2,16 @@
 * Encendido secuencial de 3 leds usando makefile en raspberry
 * 
 * Historial de cambios:
-* V1 - Original
+* v1 - Original
 * v2 - Se agregaron #defines para los colores
+* v3 - Se incluyen funcion Random para el tiempo de encendido
 * 
 */
 
 #include<stdio.h>
 #include<pigpio.h>
+#include<time.h>
+
 
 #define GREEN 17
 #define BLUE  27
@@ -24,22 +27,22 @@ int main()
 
 	
         while(1)
-        {   sleep(2);
+        {   sleep(rand());
 
                 gpioWrite(GREEN, 0);
 	        gpioWrite(BLUE, 1);
 	        gpioWrite(RED, 1);               
-			sleep(1);
+			sleep(rand());
 
             gpioWrite(GREEN, 1);
 	    gpioWrite(BLUE, 0);
 	    gpioWrite(RED, 1);               
-	    sleep(1);        
+	    sleep(rand());        
 
             gpioWrite(GREEN, 1);
 	    gpioWrite(BLUE, 1);
             gpioWrite(RED, 0);               
-            sleep(1);
+            sleep(rand());
             
             gpioWrite(GREEN,0);
             gpioWrite(BLUE,0);
